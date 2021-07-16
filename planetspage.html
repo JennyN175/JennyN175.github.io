@@ -1,0 +1,140 @@
+<html>
+    <head>
+        <title>space is cool yay | Planets</title>
+        <link rel="stylesheet" type="text/css" href="css/planetspage.css" />
+        <link rel="stylesheet" type="text/css" href="css/starbg_planets.css" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="top-bar">
+                <div class="bg">
+                    <div class="logo" id="display">
+                        <img src="Images/logo.png" style="width:100%">
+                    </div>
+                    <div class="nav" id="display">
+                        <span>
+                            <a href="homepage.html">HOME</a>
+                        </span>
+                        <span>
+                            <a href="planetspage.html">PLANETS</a>
+                        </span>
+                    
+                        <span>
+                            <a href="planetspage.html">QUIZZES</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="planets">
+                <div class="block">
+                  <div id='stars'></div>
+                  <div id='stars2'></div>
+                  <div id='stars3'></div>
+                  <img src="Images/mercury_background.jpg" data-speed="1" class="img-parallax">
+                  <h2><a href="homepage.html">Mercury</a></h2> 
+                </div>
+                <div class="block">
+                  <div id='stars'></div>
+                  <div id='stars2'></div>
+                  <div id='stars3'></div>
+                  <img src="Images/venus_background.jpg" data-speed="1" class="img-parallax">
+                  <h2><a href="homepage.html">Venus</a></h2> 
+                </div>
+                <div class="block">
+                  <div id='stars'></div>
+                  <div id='stars2'></div>
+                  <div id='stars3'></div>
+                  <img src="Images/earth_background.jpg" data-speed="1" class="img-parallax">
+                  <h2><a href="homepage.html">Earth</a></h2> 
+                </div>
+                <div class="block">
+                  <div id='stars'></div>
+                  <div id='stars2'></div>
+                  <div id='stars3'></div>
+                  <img src="Images/mars_background.jpg" data-speed="1" class="img-parallax">
+                  <h2><a href="homepage.html">Mars</a></h2> 
+                </div>
+                <div class="block">
+                  <div id='stars'></div>
+                  <div id='stars2'></div>
+                  <div id='stars3'></div>
+                  <img src="Images/jupiter_background.jpg" data-speed="1" class="img-parallax">
+                  <h2><a href="homepage.html">Jupiter</a></h2> 
+                </div>
+                <div class="block">
+                <div id='stars'></div>
+                  <div id='stars2'></div>
+                  <div id='stars3'></div>
+                  <img src="Images/saturn_background.jpg" data-speed="1" class="img-parallax">
+                  <h2><a href="homepage.html">Saturn</a></h2> 
+                </div>
+                <div class="block">
+                  <div id='stars'></div>
+                  <div id='stars2'></div>
+                  <div id='stars3'></div>
+                  <img src="Images/uranus_background.jpg" data-speed="1" class="img-parallax">
+                  <h2><a href="homepage.html">Uranus</a></h2> 
+                </div>
+                <div class="block">
+                  <div id='stars'></div>
+                  <div id='stars2'></div>
+                  <div id='stars3'></div>
+                  <img src="Images/neptune_background.jpg" data-speed="1" class="img-parallax">
+                  <h2><a href="homepage.html">Neptune</a></h2> 
+                </div>
+            </div>
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+            <script>
+                $('.img-parallax').each(function()
+                {
+                  var img = $(this);
+                  var imgParent = $(this).parent();
+
+                  function parallaxImg () 
+                  {
+                        var speed = img.data('speed');
+                        var imgY = imgParent.offset().top;
+                        var winY = $(this).scrollTop();
+                        var winH = $(this).height();
+                        var parentH = imgParent.innerHeight();
+
+
+                        // The next pixel to show on screen      
+                        var winBottom = winY + winH;
+
+                        // If block is shown on screen
+                        if (winBottom > imgY && winY < imgY + parentH) 
+                        {
+                            // Number of pixels shown after block appear
+                            var imgBottom = ((winBottom - imgY) * speed);
+                            // Max number of pixels until block disappear
+                            var imgTop = winH + parentH;
+                            // Porcentage between start showing until disappearing
+                            var imgPercent = ((imgBottom / imgTop) * 100) + (50 - (speed * 50));
+                        }
+
+                        img.css
+                        ({
+                          top: imgPercent + '%',
+                          transform: 'translate(-50%, -' + imgPercent + '%)'
+                        });
+                    }
+
+                    $(document).on
+                    ({
+                        scroll: function () 
+                        {
+                            parallaxImg();
+                        }, ready: function () 
+                        {
+                          parallaxImg();
+                        }
+                     });
+                });
+            </script> 
+        </div>
+    </body>
+</html>
